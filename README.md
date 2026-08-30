@@ -1,9 +1,21 @@
-# SpotOn Dashboard — interface recreation
+# SpotOn — interface recreation
 
 A working recreation of the **SpotOn merchant dashboard** for restaurant point-of-sale:
 the login flow, the responsive shell, and all seventeen sections an operator uses to run
 a restaurant — sales, reporting, orders, menus, labor, guests, marketing, channels,
 payouts and setup.
+
+Two surfaces are built here:
+
+| | | |
+|---|---|---|
+| **Web dashboard** | this directory | Next.js 15 · 17 sections · responsive 390→1440px |
+| **Android app** | [`android/`](android/) | Kotlin · Jetpack Compose · Material 3 · 33 screens |
+
+Both share the same brand tokens and the same seeded data layer — the same
+restaurant, on the same day, with the same numbers — so they read side by side.
+The rest of this file covers the web dashboard; the Android app has
+[its own README](android/README.md).
 
 Everything runs against a deterministic mock data layer, so the whole product is
 clickable end to end with no backend.

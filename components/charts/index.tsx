@@ -32,9 +32,10 @@ function ticks(max: number, count = 4) {
   const raw = max / count;
   const mag = Math.pow(10, Math.floor(Math.log10(raw)));
   const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= raw) ?? mag * 10;
-  const out: number[] = [];
-  for (let v = 0; v <= max + step * 0.001; v += step) out.push(v);
-  return out;
+  // The top tick must sit at or above the data max, or the tallest mark
+  // overflows the plot and gets clipped.
+  const steps = Math.max(1, Math.ceil(max / step));
+  return Array.from({ length: steps + 1 }, (_, i) => i * step);
 }
 
 export type Tip = { x: number; y: number; rows: Array<{ label: string; value: string; color?: string }>; title: string };
