@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   SpotOn Dashboard — design tokens
+   Palette sourced from spoton.com: brand blue #0759ef, ink #090d12,
+   slate #242d38 / #445469, hairline #d6dadf. Type: Poppins.
+   Committed light-mode design (matches the production dashboard).
+   ------------------------------------------------------------------ */
+@theme {
+  --color-brand-50:  #eef4ff;
+  --color-brand-100: #e5eefb;
+  --color-brand-200: #bbc5ef;
+  --color-brand-300: #a4b6f5;
+  --color-brand-400: #1e68ef;
+  --color-brand-500: #0759ef;
+  --color-brand-600: #1540d6;
+  --color-brand-700: #12349f;
+
+  --color-ink-900: #090d12;
+  --color-ink-800: #16202c;
+  --color-ink-700: #242d38;
+  --color-ink-500: #445469;
+  --color-ink-400: #6b7a8f;
+  --color-ink-300: #9aa6b6;
+  --color-ink-200: #d6dadf;
+  --color-ink-100: #e7ebed;
+  --color-ink-50:  #f4f6f8;
+
+  --color-good:     #0f8a4d;
+  --color-good-bg:  #e6f5ec;
+  --color-warning:  #b26b00;
+  --color-warning-bg: #fdf1dc;
+  --color-critical: #c02b2b;
+  --color-critical-bg: #fdeaea;
+  --color-info-bg:  #e5eefb;
+
+  /* categorical series — validated (see README) */
+  --color-s1: #0759ef;
+  --color-s2: #eb6834;
+  --color-s3: #1baf7a;
+  --color-s4: #eda100;
+  --color-s5: #e87ba4;
+  --color-s6: #4a3aa7;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --canvas: #f4f6f8;
+}
+
+* { border-color: var(--color-ink-100); }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--canvas);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum" 0;
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Scrollbars — subtle, so dense tables don't get noisy */
+.scroll-thin { scrollbar-width: thin; scrollbar-color: var(--color-ink-200) transparent; }
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--color-ink-200); border-radius: 99px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+/* Focus ring — one definition, used everywhere */
+.ring-focus:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.animate-fade-up { animation: fade-up .18s ease-out both; }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: var(--color-ink-100); }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+@media print {
+  .no-print { display: none !important; }
+}
