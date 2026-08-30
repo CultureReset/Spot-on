@@ -1,7 +1,22 @@
+# Node / Next.js
 node_modules
 .next
 out
+next-env.d.ts
+
+# Android / Gradle
+android/.gradle
+android/local.properties
+android/build
+android/app/build
+android/captures
+*.apk
+*.aab
+*.iml
+.kotlin
+
+# Editors / OS
+.idea
 .DS_Store
 *.tsbuildinfo
-next-env.d.ts
 .env*.local
